@@ -1,0 +1,35 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.json());
+
+app.get("/", (req, res, next) => {
+   res.status(200).send({ con: true, "msg": "Aung Tal" });
+});
+
+let output = (req, res, next) => {
+   console.log("Output Function ");
+   next();
+}
+let input = (req, res, next) => {
+   console.log("This is Input Function");
+   next();
+}
+
+app.use("/ca", output, input, (req, res,next) => {
+   next(new Error("This is Custom Error Message!"));
+   // res.status(200).send({ con: true, "msg": "This is special Response" });
+});
+
+
+app.use((err, req, res, next) => {
+   err.status = err.status || 404;
+   res.status(err.status).json({ con: false, "msg": err.message });
+});
+
+app.get("*", (req, res) => {
+   res.status(200).send({ con: false, "msg": "No route with that request!" });
+});
+
+app.listen(3000, () => console.log("We are running at port 3000"));
