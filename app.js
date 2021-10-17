@@ -3,12 +3,15 @@ const express = require('express'),
    bodyParser = require('body-parser'),
    app = express(),
    fileUpload = require('express-fileupload'),
-   { deleteFile } = require("./utils/gallery");
+   mongoose = require('mongoose');
 
-// mongodb => noSQL database => SQL
-
+mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`);
 app.use(fileUpload());
 app.use(bodyParser.json());
+
+const categoryRoute = require('./routes/category');
+
+app.use('/cats', categoryRoute);
 
 app.use((err, req, res, next) => {
    err.status = err.status || 404;
@@ -20,3 +23,4 @@ app.get("*", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => console.log(`We are running at port ${process.env.PORT}`));
+
