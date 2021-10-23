@@ -2,7 +2,7 @@ const TB = require('../models/category');
 const LIBBY = require('../utils/libby');
 
 let all = async (req, res) => {
-   let result = await TB.find();
+   let result = await TB.find().populate('subcats');
    LIBBY.fMsg(res, "All Categories", result);
 }
 
@@ -30,7 +30,6 @@ let drop = async (req, res, next) => {
 let patch = async (req, res, next) => {
    let existCat = await TB.findById(req.params.id);
    if (existCat) {
-      console.log(req.body);
       await TB.findByIdAndUpdate(req.params.id, req.body);
       let result = await TB.findById(req.params.id);
       LIBBY.fMsg(res, "Category Updated", result);

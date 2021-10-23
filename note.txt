@@ -1,0 +1,33 @@
+CRUD => Create , Read , Update, Delete
+
+Join 
+
+Category 
+   -> name 
+   -> image 
+   -> subcategories = []
+
+Subcategory 
+   -> category 
+   -> name 
+   -> image
+
+Child Category 
+   -> Dell 
+   -> Ausus
+   -> Mac 
+   -> Mac Mini
+
+
+Electronic ( Category )
+   -> Computer  ( Sub Category )
+      -> Dell 
+      -> Asus 
+      -> Mac 
+   -> Phone  ( Sub Category )
+      -> iPhone  (Child Category)
+      -> Xiaomi (Child Category)
+      -> Vivo  (Child Category)
+      -> Sumsung (Child Category)
+Food 
+Drink
