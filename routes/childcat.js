@@ -1,9 +1,9 @@
 const router = require('express-promise-router')();
-const controller = require('../controllers/category');
+const controller = require('../controllers/childcat');
 const { saveFile } = require('../utils/gallery');
 
-router.get('/', controller.all);
 router.post('/', saveFile, controller.add);
+router.get('/', controller.all);
 
 router.route("/:id")
    .get(controller.get)

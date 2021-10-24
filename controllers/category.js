@@ -1,8 +1,19 @@
 const TB = require('../models/category');
+const SubcatTB = require('../models/subcat');
+const ChildcatTB = require('../models/childcat');
 const LIBBY = require('../utils/libby');
 
 let all = async (req, res) => {
-   let result = await TB.find().populate('subcats');
+   let result = await TB.find().populate(
+      {
+         path: "subcats",
+         model: SubcatTB,
+         populate: {
+            path: "childcats",
+            model: ChildcatTB
+         }
+      }
+   );
    LIBBY.fMsg(res, "All Categories", result);
 }
 

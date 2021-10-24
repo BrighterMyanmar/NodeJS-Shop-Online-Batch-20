@@ -13,7 +13,7 @@ let add = async (req, res, next) => {
 }
 
 let all = async (req, res, next) => {
-   let result = await TB.find().populate('category');
+   let result = await TB.find().populate('category childcats');
    LIBBY.fMsg(res, "All Sub Categories", result);
 }
 

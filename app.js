@@ -11,9 +11,11 @@ app.use(bodyParser.json());
 
 const categoryRouter = require('./routes/category');
 const subcatRouter = require('./routes/subcat');
+const childcatRouter = require('./routes/childcat');
 
 app.use('/cats', categoryRouter);
 app.use('/subcats', subcatRouter);
+app.use('/childcats', childcatRouter);
 
 app.use((err, req, res, next) => {
    err.status = err.status || 404;
