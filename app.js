@@ -13,12 +13,16 @@ const categoryRouter = require('./routes/category');
 const subcatRouter = require('./routes/subcat');
 const childcatRouter = require('./routes/childcat');
 const tagRouter = require('./routes/tag');
+const permitRouter = require('./routes/permit');
+const roleRouter = require('./routes/role');
 const userRouter = require('./routes/user');
 
 app.use('/cats', categoryRouter);
 app.use('/subcats', subcatRouter);
 app.use('/childcats', childcatRouter);
 app.use('/tags', tagRouter);
+app.use('/permits', permitRouter);
+app.use('/roles', roleRouter);
 app.use('/users', userRouter);
 
 app.use((err, req, res, next) => {

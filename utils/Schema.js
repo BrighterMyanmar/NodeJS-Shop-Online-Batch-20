@@ -14,6 +14,11 @@ module.exports = {
          image: Joi.string().required()
       }),
    },
+   PermitSchema: {
+      add: Joi.object({
+         name: Joi.string().min(3).required()
+      })
+   },
    TagSchema: {
       add: Joi.object({
          name: Joi.string().required(),
