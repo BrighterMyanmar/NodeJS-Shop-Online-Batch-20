@@ -17,13 +17,15 @@ const permitRouter = require('./routes/permit');
 const roleRouter = require('./routes/role');
 const userRouter = require('./routes/user');
 
-app.use('/cats', categoryRouter);
+let { validateToken } = require('./utils/validator');
+
+app.use('/cats', validateToken(), categoryRouter);
 app.use('/subcats', subcatRouter);
 app.use('/childcats', childcatRouter);
 app.use('/tags', tagRouter);
 app.use('/permits', permitRouter);
 app.use('/roles', roleRouter);
-app.use('/users', userRouter);
+app.use('/users', validateToken(), userRouter);
 
 app.use((err, req, res, next) => {
    err.status = err.status || 404;

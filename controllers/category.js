@@ -18,9 +18,9 @@ let all = async (req, res) => {
 }
 
 let add = async (req, res) => {
-   let saveCat = new TB(req.body);
-   let result = await saveCat.save();
-   LIBBY.fMsg(res, "Category Save Success", result);
+   // let saveCat = new TB(req.body);
+   // let result = await saveCat.save();
+   LIBBY.fMsg(res, "Category Save Success", req.body);
 }
 
 let get = async (req, res) => {
