@@ -11,7 +11,8 @@ let add = async (req, res, next) => {
 }
 
 let all = async (req, res, next) => {
-   let result = await TB.find().select('name -_id');
+   // let result = await TB.find().select('name -_id');
+   let result = await TB.find();
    LIBBY.fMsg(res, "All Child Category", result);
 }
 

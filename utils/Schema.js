@@ -14,8 +14,29 @@ module.exports = {
       }),
       addRole: Joi.object({
          userId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
-         roleId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+         roleId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         user: Joi.optional()
       }),
+      addPermit: Joi.object({
+         userId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         permitId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         user: Joi.optional()
+      }),
+   },
+   ProductSchema: {
+      add: Joi.object({
+         "name": Joi.string().required(),
+         "price": Joi.number().min(4).required(),
+         "breand": Joi.string().required(),
+         "category": Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         "subcat": Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         "childcat": Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         "tag": Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+         "refund": Joi.string().optional(),
+         "features": Joi.object().required(),
+         "colors": Joi.array().required(),
+         "images": Joi.array().required(),
+      })
    },
    CategorySchema: {
       add: Joi.object({
