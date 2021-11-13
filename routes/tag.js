@@ -5,8 +5,6 @@ const { TagSchema, AllSchema } = require('../utils/Schema');
 const { validateBody, validateParam } = require('../utils/validator');
 
 router.post('/', [saveFile, validateBody(TagSchema.add), controller.add]);
-router.get('/', controller.all);
-
 
 router.route('/:id')
    .get([validateParam(AllSchema.id, "id"), controller.get])

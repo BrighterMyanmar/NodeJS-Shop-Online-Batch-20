@@ -36,6 +36,7 @@ module.exports = {
          "features": Joi.object().required(),
          "colors": Joi.array().required(),
          "images": Joi.array().required(),
+         user: Joi.optional()
       })
    },
    CategorySchema: {
@@ -58,6 +59,9 @@ module.exports = {
    AllSchema: {
       id: Joi.object({
          id: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+      }),
+      page: Joi.object({
+         page: Joi.number().min(1).required()
       })
    }
 }

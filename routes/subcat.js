@@ -2,7 +2,7 @@ const router = require('express-promise-router')();
 const controller = require('../controllers/subcat');
 const { saveFile } = require('../utils/gallery');
 
-router.get('/', controller.all);
+
 router.post('/', saveFile, controller.add);
 
 router.route("/:id")

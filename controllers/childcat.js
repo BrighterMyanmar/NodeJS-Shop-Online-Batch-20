@@ -3,8 +3,7 @@ const SubcatTB = require('../models/subcat');
 const LIBBY = require('../utils/libby');
 
 let add = async (req, res, next) => {
-   // let saveData = new TB(req.body);
-   // let result = await saveDate.save();
+   delete req.body.user;
    let result = await new TB(req.body).save();
    await SubcatTB.findByIdAndUpdate(req.body.subcat, { $push: { childcats: result._id } });
    LIBBY.fMsg(res, "Child Category Created", result);

@@ -15,3 +15,7 @@ const ProductSchema = new Schema({
    images: { type: Array, required: true },
    created: { type: Date, default: Date.now }
 });
+
+const Product = mongoose.model("product", ProductSchema);
+
+module.exports = Product;
