@@ -5,11 +5,17 @@ const CategoryController = require('../controllers/category');
 const SubCatController = require('../controllers/subcat');
 const ChildCatController = require('../controllers/childcat');
 const TagController = require('../controllers/tag');
-const { validateBody, validateParam } = require('../utils/validator');
+const OrderController = require('../controllers/order');
+const { validateBody, validateParam, validateToken } = require('../utils/validator');
 const { UserSchema, AllSchema } = require('../utils/Schema');
 
 router.post("/register", [validateBody(UserSchema.register), UserController.register]);
 router.post('/login', [validateBody(UserSchema.login), UserController.login]);
+router.post('/passreset', [validateToken(), UserController.passwordReset]);
+
+router.post('/order', [validateToken(), OrderController.add]);
+router.get('/myorders', [validateToken(), OrderController.getOrder]);
+
 router.get('/products/:page', [validateParam(AllSchema.page, "page"), ProductController.all]);
 router.get('/cats', CategoryController.all);
 router.get('/subcats', SubCatController.all);

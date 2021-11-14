@@ -64,11 +64,21 @@ let userRemovePermit = async (req, res, next) => {
       LIBBY.fMsg(res, "User Permit Removed");
    } else next(new Error(`User doesn't has that permit id of ${req.body.userId}`));
 }
+
+let passwordReset = async (req, res, next) => {
+   let user = await TB.findById(req.body.user._id);
+   if (LIBBY.comPass(req.body.oldpass, user.password)) {
+      let encodePass = LIBBY.encode(req.body.newpass);
+      await TB.findByIdAndUpdate(user._id, { password: encodePass });
+      LIBBY.fMsg(res, "Password Reset");
+   } else next(new Error(`Creditial Error`));
+}
 module.exports = {
    register,
    login,
    userAddRole,
    userRemoveRole,
    userAddPermit,
-   userRemovePermit
+   userRemovePermit,
+   passwordReset
 }
