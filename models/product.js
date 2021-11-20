@@ -10,7 +10,7 @@ const ProductSchema = new Schema({
    childcat: { type: Schema.Types.ObjectId, ref: "childcat" },
    tag: { type: Schema.Types.ObjectId, ref: "tag" },
    refund: { type: String, enum: ["YES", "NO", "IN_10_DAYS"], default: "NO" },
-   features: { type: Object, required: true },
+   features: { type: Object, default: {} },
    colors: { type: Array, required: true },
    images: { type: Array, required: true },
    created: { type: Date, default: Date.now }

@@ -1,0 +1,48 @@
+[
+   {
+      "_id": "617e7e19acd6dd5c06cda743",
+      "name": "Mg Mg",
+      "phone": "09500500500",
+      "password": "$2a$10$wgSF./k59YwB.LLhmKemm.jU1XuInZJ8XxMX2PSzytR/5JLdEf2Ja",
+      "roles": [
+         "617e791855c8a25285d8f91c"
+      ],
+      "permits": [
+         "617e742c0a0ba78a6dc864b1"
+      ],
+      "created": "2021-10-31T11:29:29.530Z",
+      "__v": 0
+   },
+   {
+      "_id": "6187acc629dcfedd83d7ab90",
+      "name": "Aung Aung",
+      "phone": "09600600600",
+      "password": "$2a$10$vL4rW2soPW2H79MZpCfFHu/awUlIthWlgXbPxQOswnz14ataPm5Zq",
+      "roles": [],
+      "permits": [],
+      "created": "2021-11-07T10:39:02.494Z",
+      "__v": 0
+   },
+   {
+      "_id": "6187ad1785a567d800a818fb",
+      "name": "Su Su",
+      "phone": "09700700700",
+      "password": "$2a$10$2WGMz5wczrwAUYo.UIdq7OZ0eFsHuP6xc2/yI9Mo/LSYp9eyw03zy",
+      "roles": [],
+      "permits": [],
+      "created": "2021-11-07T10:40:23.392Z",
+      "__v": 0
+   },
+   {
+      "_id": "6198da9c8ead167d3ec36be5",
+      "name": "Owner",
+      "phone": "09100100100",
+      "password": "$2a$10$Gu0s5kFyxTt6CJ4kCu/J5usuq8cXi4tu5IAmTO/pRbQK4vi2ihDfW",
+      "roles": [
+         "617e791855c8a25285d8f91c"
+      ],
+      "permits": [],
+      "created": "2021-11-20T11:23:08.193Z",
+      "__v": 0
+   }
+]

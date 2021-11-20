@@ -35,6 +35,7 @@ let userAddRole = async (req, res, next) => {
       LIBBY.fMsg(res, "Role Added to User", found);
    }
 }
+
 let userRemoveRole = async (req, res, next) => {
    let dbUser = await TB.findById(req.body.userId);
    if (dbUser) {
@@ -46,6 +47,7 @@ let userRemoveRole = async (req, res, next) => {
       } else next(new Error(`user has no role with that id of ${req.body.roleId}`))
    } else next(new Error(`No user with that id of ${req.body.userId}`))
 }
+
 let userAddPermit = async (req, res, next) => {
    let dbUser = await TB.findById(req.body.userId);
    if (dbUser) {
@@ -56,6 +58,7 @@ let userAddPermit = async (req, res, next) => {
       } else next(new Error("User have that permit already!"));
    } else next(new Error(`No user with that id of ${req.body.userId}`));
 }
+
 let userRemovePermit = async (req, res, next) => {
    let dbUser = await TB.findById(req.body.userId);
    let found = dbUser.permits.find(pid => pid.equals(req.body.permitId));

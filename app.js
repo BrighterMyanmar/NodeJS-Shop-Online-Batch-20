@@ -40,5 +40,13 @@ app.get("*", (req, res) => {
    res.status(200).send({ con: false, "msg": "No route with that request!" });
 });
 
+let migrate = async () => {
+   let migrator = require('./migrations/migrator');
+   let generator = require('./migrations/generate');
+   // migrator.migrate();
+   // await generator.ownerGenerate();
+}
+// migrate();
+
 app.listen(process.env.PORT, () => console.log(`We are running at port ${process.env.PORT}`));
 
