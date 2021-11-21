@@ -2,7 +2,11 @@ require('dotenv').config();
 const express = require('express'),
    bodyParser = require('body-parser'),
    app = express(),
+   { Server } = require('socket.io'),
+   httpServer = require('http').createServer(app),
+   io = new Server(httpServer),
    fileUpload = require('express-fileupload'),
+   Libby = require('./utils/libby'),
    mongoose = require('mongoose');
 
 mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`);
@@ -48,5 +52,22 @@ let migrate = async () => {
 }
 // migrate();
 
-app.listen(process.env.PORT, () => console.log(`We are running at port ${process.env.PORT}`));
+// io.on("connection", socket => {
+//    console.log("Connection Establish");
+//    socket.emit("greet", "Lohel");
+//    socket.on("info", data => {
+//       console.log("User data", data);
+//       socket.emit("myinfo", { name: "Mg Mg", age: "20" });
+//    });
+// });
+
+io.of("/chat").use(async (socket, next) => {
+   Libby.getTokenFromSocket(socket, next);
+}).on("connection", socket => {
+   socket.emit("greet", "Lohel");
+});
+
+
+
+httpServer.listen(process.env.PORT, () => console.log(`We are running at port ${process.env.PORT}`));
 
