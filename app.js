@@ -64,7 +64,7 @@ let migrate = async () => {
 io.of("/chat").use(async (socket, next) => {
    Libby.getTokenFromSocket(socket, next);
 }).on("connection", socket => {
-   socket.emit("greet", "Lohel");
+   require('./utils/chat').initialize(io, socket);
 });
 
 

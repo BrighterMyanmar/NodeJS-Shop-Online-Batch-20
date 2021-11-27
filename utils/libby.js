@@ -10,6 +10,7 @@ let getTokenFromSocket = async (socket, next) => {
    if (token) {
       try {
          let user = jwt.verify(token, process.env.SECRET_KEY);
+         socket.userData = user.data;
          next();
       } catch (error) {
          next(new Error("Hand Shake Error"));
